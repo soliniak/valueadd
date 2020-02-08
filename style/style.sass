@@ -1,0 +1,467 @@
+*, *::before, *::after
+      box-sizing: border-box
+@import url(https://rsms.me/inter/inter.css)
+
+*, html
+      font-family: 'Inter', sans-serif  
+      
+body, html
+      height: 100%   
+      width: 100%
+
+body
+      background-color: #ffffff
+
+$pink: #fc3b56
+$grey: #e1e6f0
+
+@mixin flex($alignItems: center, $justifyContent: center, $flexDirection: row)
+      display: flex
+      align-items: $alignItems
+      justify-content: $justifyContent
+      flex-direction: $flexDirection
+
+@mixin size($size)
+      height: $size
+      width: $size
+
+.close__menu
+      position: absolute
+      right: 20px
+      top: 20px
+.cross__svg
+      transform: rotate(45deg)
+      
+.btn
+      border-radius: 5px
+      padding: 10px 30px
+      &__primary
+            background-color: $pink
+            color: #ffffff
+            box-shadow: 0 1px 4px #00000052
+            &:hover
+                  background-color: #ff1b3b
+      &__login
+            display: none
+            &--hidden
+                  margin-top: 25px
+      &__container
+            width: 100%
+            max-width: 1024px
+      &__send
+            margin: 0 auto
+            margin-top: 10px
+            display: block
+            
+a
+      color: inherit
+.link
+      border-bottom: 2px solid transparent
+      padding-bottom: 10px
+      &:hover
+            border-bottom: 2px solid #a6e0ff
+
+.link--active
+      border-bottom: 2px solid #7ecef8
+
+.container
+      width: 100%
+      height: 100%
+      @include flex
+      flex-wrap: wrap
+      background-color: #ffffff
+      
+.navigation__header
+      @include flex($justifyContent: space-between)
+      max-width: 1024px
+      width: 100%
+      padding: 10px 15px
+      z-index: 300
+
+.logo--vertical img
+      width: 90px
+
+.main__menu__btn
+      padding: 5px
+      @include flex
+
+.icon__hamburger
+      pointer-events: none
+      
+.overlay
+      height: 100%
+      width: 100%
+      z-index: 100
+      position: absolute
+      left: 0
+      top: 0
+      background-color: rgba(240,240,240,.5)
+      display: none
+
+.main__menu
+      position: fixed
+      top: 0
+      left: 0
+      @include flex($flexDirection: column, $alignItems: flex-start, $justifyContent: flex-start)
+      padding: 0px 30px
+      height: 100%
+      background-color: #ffffff
+      z-index: 200
+      min-width: 250px
+      transition: transform .3s ease
+      transform: translateX(-100%)
+
+.menu__item
+      align-self: flex-start
+      padding: 20px 0
+      
+.banner
+      position: relative
+      width: 100%
+      &__caption
+            position: absolute
+            color: #ffffff
+            bottom: 0
+            left: 0
+            padding: 20px 14px
+            width: 100%
+            @include flex($flexDirection: column)
+      &__image
+            max-width: 100%
+            width: 100%
+            source
+                  max-width: 100%
+                  width: 100%
+            img
+                  max-width: 100%
+                  width: 100%
+.caption__header
+      font-size: 22px
+      line-height: 30px
+      max-width: 1024px
+      width: 100%
+
+.caption__content
+      font-size: 12px
+      font-weight: 200
+      line-height: 18px
+      margin: 12px 0
+      opacity: .8
+      max-width: 1024px
+      width: 100%
+
+.section
+      margin-top: 40px
+      width: 100%
+      padding: 0 15px
+      @include flex($flexDirection: column)
+      &__title
+            font-size: 22px
+            font-weight: 700
+            width: 100%            
+            text-align: center
+            &::after
+                  content: ''
+                  width: 50px
+                  height: 3px
+                  background-color: $pink
+                  display: block
+                  margin: 0 auto
+                  margin-top: 10px
+
+.passions__container
+      @include flex($flexDirection: column)
+      width: 100%
+
+.write__us
+      max-width: 720px
+
+.trusted__us
+      display: none
+
+.passion
+      @include flex($flexDirection: column)
+      width: 100%
+      background-image: radial-gradient(circle, rgba(255,255,255,0) 40%, rgba(255,255,255,1) 60%), url('./../images/pattern.svg')      
+      background-repeat: no-repeat
+      background-size: 100%
+      background-position: 0, 0 -50px
+      margin-bottom: 40px
+      overflow: hidden
+      &__icon
+            margin-top: 70px
+            margin-bottom: 20px
+
+.subsection__header
+      font-size: 18px
+      font-weight: 600
+      text-align: center
+      margin-bottom: 10px
+
+.subsection__paragraph
+      font-size: 12px
+      line-height: 18px
+      padding: 0 20px
+      text-align: center
+
+.form__container
+      border: 1px solid $grey
+      margin: 25px 0
+      padding-bottom: 15px
+      width: 100%
+
+.form__header
+      font-size: 15px
+      margin-top: 25px
+
+.form__paragraph
+      margin-top: 15px
+      margin-bottom: 10px
+
+.form__header, .form__paragraph
+      text-align: left
+      padding: 0 16px
+
+.form__input
+      padding: 18px
+
+.label__title
+      display: block
+      margin-bottom: 10px
+      font-size: 12.5px
+      font-weight: 700
+
+.actual__input, .select__active
+      border: 1px solid $grey
+      height: 45px
+      width: 100%
+      padding: 15px
+      font-size: 13px
+
+.select__active
+      @include flex($justifyContent: space-between)
+      position: relative
+      font-weight: 600
+      cursor: pointer
+
+.option
+      cursor: pointer
+      input
+            display: none
+
+.input__select
+      position: relative
+
+.options__list
+      transition: height .3s ease
+      height: 0
+      width: calc(100% - 36px)
+      overflow: hidden
+      position: absolute
+
+.arrow
+      background-image: url("./../images/arrow.svg")
+      background-repeat: no-repeat
+      height: 20px
+      width: 12px
+      transform: rotate(90deg) scale(.7)
+      margin-top: 5px
+      margin-right: 10px
+      transition: transform .2s ease
+      
+.option
+      border: 1px solid $grey
+      padding: 15px
+      transition: background .1s linear
+      background-color: #ffffff
+      cursor: pointer
+      &::before
+            content: '-'
+            margin-right: 5px
+      &:hover
+            background-color: #f9f9f9
+
+.textarea
+      height: 100px
+
+.footer
+      @include flex
+      width: 100%
+      margin-top: 50px
+      &__container
+            @include flex($flexDirection: column)
+            border-top: 1px solid $grey
+            margin: 0 15px
+            padding: 20px 15px
+            width: 100%
+
+.footer__menu--item
+      text-align: center
+      margin-top: 20px
+      font-size: 12px
+      color: #9babc9
+      transition: color .3s ease
+      &:hover
+            color: $pink
+
+.social
+      margin: 20px 0
+      @include flex($justifyContent: space-between)
+      width: 55px
+
+.copyright
+      font-size: 10px
+      color: #9babc9
+      font-weight: 600
+
+
+
+// ################# MEDIA #################
+// ################# 600 #################
+
+@media all and (min-width: 600px)
+      .section
+            padding: 0 25px
+            &__title
+                  margin-bottom: 10px
+
+      .form__container
+            padding: 0px 18px 18px      
+            max-width: 600px  
+
+      .form__paragraph
+            padding: 0 16px
+
+      .banner__caption
+            padding: 35px 25px   
+
+      .navigation__footer
+            flex: 1 
+
+      .footer
+            flex-direction: row
+            flex-wrap: wrap
+            width: 100%
+            &__container
+                  justify-content: space-between
+                  padding: 0 0 15px 0
+                  margin: 0 25px    
+                  flex-flow: wrap row
+
+      .footer__menu
+            @include flex($justifyContent: space-around)            
+            margin-right: 60px
+            &--item
+                  margin: 0
+                  margin-bottom: 5px
+                  font-size: 10px
+
+      .copyright
+            flex: 100%
+            text-align: center
+
+      .passions__container
+            flex-direction: row
+            flex-wrap: nowrap
+            justify-content: space-between
+
+      .passion
+            width: 30%
+
+      .subsection__paragraph
+            padding: 0
+
+      .btn__send
+            margin: 10px 15px 10px auto
+
+      .btn__container
+            margin-top: 10px
+
+      .passion__icon
+            margin-top: 70px
+            margin-bottom: 40px
+
+      .section, .footer
+            max-width: 1024px
+
+
+
+// ################# 1024 #################
+
+@media all and (min-width: 1024px)
+      .footer__container
+            margin: 0
+
+      .footer__menu--item
+            font-size: 13px
+
+      .caption__content
+            padding-right: 260px    
+
+      .main__menu
+            @include flex($justifyContent: space-between)
+            position: relative
+            width: 100%
+            margin: 0
+            margin-right: 100px
+            padding: 0
+            transform: translateX(0)
+            
+      .main__menu__btn, .close__menu
+            display: none
+
+      .menu__item
+            font-size: 14px
+            font-weight: 600
+            align-self: center
+            &:last-child
+                  display: none
+
+      .btn__login
+            display: block
+
+      .navigation__header > .logo--vertical
+            display: none      
+
+
+
+// ################# 1090 #################
+
+@media all and (min-width: 1090px)
+      .navigation__header
+            padding: 10px 0px
+
+
+
+// ################# 1200 #################
+
+@media all and (min-width: 1200px)
+      .trusted__us
+            @include flex
+            flex-direction: column
+            width: 100%
+
+      .brands__container
+            @include flex
+            margin: 25px 0 100px 0
+            flex-wrap: wrap
+            width: 1024px
+            height: 600px
+            border: 1px solid $grey
+
+      .brand__container
+            width: 25%
+            height: 25%
+            border: 1px solid $grey
+            padding: 20px 10px
+            @include flex
+            .brand
+                  max-width: 60%
+                  max-height: 80%
+                  filter: grayscale(100%)
+                  opacity: .6
+                  transition: all .2s ease
+                  @include flex
+            &:hover .brand
+                  filter: grayscale(0)
+                  opacity: 1
