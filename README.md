@@ -7,9 +7,9 @@ Stack:
 - JavaScript
 - Lazysizes
 - Photoshop
-- Live Server dla VSCode
-- Live Sass Compiler dla VSCode
-- Minify dla VSCode
+- Live Server for VSCode
+- Live Sass Compiler for VSCode
+- Minify for VSCode
 - BEM
 - DRY
 - Open Graph protocol
