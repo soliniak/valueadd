@@ -4,7 +4,6 @@ const overlay = document.querySelector(".overlay")
 const container = document.querySelector(".container")
 const closeMenuBtn = document.querySelector(".close__menu")
 
-
 const handleOverflow = () => {
       if(container.style.overflow === "hidden"){
             container.style.overflow = ""
@@ -15,20 +14,18 @@ const handleOverflow = () => {
       }
 }
 
-const openMenu = e => {
-      const el = e ? e.target : menuBtn
-      el.setAttribute("aria-label", "Close menu")
-      el.setAttribute("aria-expanded", true)
+const openMenu = () => {
+      menuBtn.setAttribute("aria-label", "Close menu")
+      menuBtn.setAttribute("aria-expanded", true)
       mainMenu.style.transform = "translateX(0)"
       mainMenu.setAttribute("aria-hidden", false)
       overlay.style.display = "block"
       handleOverflow()
 }
 
-const closeMenu = e => {
-      const el = e ? e.target : menuBtn
-      el.setAttribute("aria-label", "Open menu")
-      el.setAttribute("aria-expanded", false)
+const closeMenu = () => {
+      menuBtn.setAttribute("aria-label", "Open menu")
+      menuBtn.setAttribute("aria-expanded", false)
       mainMenu.style.transform = "translateX(-100%)"
       mainMenu.setAttribute("aria-hidden", true)
       overlay.style.display = "none"
@@ -44,10 +41,10 @@ closeMenuBtn.addEventListener("click", () => {
 })
 
 menuBtn.addEventListener("click", e => {
-      if (e.target.getAttribute("aria-label") == "Open menu") {
-            openMenu(e)
+      if (menuBtn.getAttribute("aria-label") === "Open menu") {
+            openMenu()
       } else {
-            closeMenu(e)
+            closeMenu()
       }
 })
 
@@ -77,6 +74,12 @@ const closeList = () => {
             option.tabIndex = -1
       })
 }
+
+document.addEventListener("click", () => {
+      if(dropdownSelectBtn.getAttribute("aria-expanded")) {
+            closeList()
+      }
+}, true)
 
 options[options.length - 1].addEventListener("focusout", () => {
       closeList()
