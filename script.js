@@ -101,15 +101,19 @@ dropdownSelectBtn.addEventListener("keypress", e => {
       }
 })
 
+const closeListAndSetFocus = option => {
+      dropdownSelectBtn.querySelector(".selected").innerText = option.innerText
+      closeList()
+      dropdownSelectBtn.focus()
+}
+
 options.forEach(option => {
       option.addEventListener("click", () => {
-            dropdownSelectBtn.querySelector(".selected").innerText = option.innerText
-            closeList()
+            closeListAndSetFocus(option)
       })
       option.addEventListener("keypress", e => {
             if (e.keyCode === 13 || e.keyCode === 32) {
-                  dropdownSelectBtn.querySelector(".selected").innerText = option.innerText
-                  closeList()
+                  closeListAndSetFocus(option)
             }
       })
 })
