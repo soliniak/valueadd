@@ -17,6 +17,10 @@ body {
   background-color: #ffffff;
 }
 
+.main {
+  max-width: 1024px;
+}
+
 .close__menu {
   position: absolute;
   right: 20px;
