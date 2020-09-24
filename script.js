@@ -5,7 +5,7 @@ const container = document.querySelector(".container")
 const closeMenuBtn = document.querySelector(".close__menu")
 
 const handleOverflow = () => {
-      if(container.style.overflow === "hidden"){
+      if (container.style.overflow === "hidden") {
             container.style.overflow = ""
             container.style.maxHeight = ""
       } else {
@@ -75,8 +75,8 @@ const closeList = () => {
       })
 }
 
-document.addEventListener("click", () => {
-      if(dropdownSelectBtn.getAttribute("aria-expanded")) {
+document.addEventListener("click", e => {
+      if (dropdownSelectBtn.getAttribute("aria-expanded") === "true" && e.target !== dropdownSelectBtn) {
             closeList()
       }
 }, true)
@@ -88,6 +88,7 @@ options[options.length - 1].addEventListener("focusout", () => {
 dropdownSelectBtn.addEventListener("click", () => {
       if (dropdownSelectBtn.getAttribute("aria-label") === "Expand list") {
             expandList()
+
       } else {
             closeList()
       }
@@ -101,7 +102,8 @@ dropdownSelectBtn.addEventListener("keypress", e => {
       }
 })
 
-const closeListAndSetFocus = option => {
+const checkOptionAndSetFocus = option => {
+      option.querySelector("input").checked = true
       dropdownSelectBtn.querySelector(".selected").innerText = option.innerText
       closeList()
       dropdownSelectBtn.focus()
@@ -109,11 +111,11 @@ const closeListAndSetFocus = option => {
 
 options.forEach(option => {
       option.addEventListener("click", () => {
-            closeListAndSetFocus(option)
+            checkOptionAndSetFocus(option)
       })
       option.addEventListener("keypress", e => {
             if (e.keyCode === 13 || e.keyCode === 32) {
-                  closeListAndSetFocus(option)
+                  checkOptionAndSetFocus(option)
             }
       })
 })
